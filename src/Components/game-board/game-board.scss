@@ -1,0 +1,220 @@
+/* Game Board Styles */
+
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+    width: 100%;
+}
+
+.player-name {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--surface-color);
+    padding: 1em;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.view-role,
+.playing,
+.voting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2em;
+
+    h2 {
+        font-size: 2rem;
+        margin: 0;
+    }
+}
+
+.role-reveal {
+    border: 2px solid var(--border-color);
+    padding: 2em 1em;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    gap: 2em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .clues {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .hint {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+
+    h3 {
+        border-radius: 8px;
+        font-size: 2rem;
+        margin: .0;
+    }
+
+    &.Citizen {
+        h3 {
+            color: var(--secondary-color);
+        }
+
+        .hint {
+            background-color: #03dac515;
+            color: var(--secondary-color);
+        }
+
+        .category {
+            color: var(--primary-color);
+        }
+
+    }
+
+    &.Impostor {
+        h3 {
+            color: var(--error-color);
+        }
+
+        .hint {
+            background-color: rgba(207, 102, 121, 0.2);
+            color: var(--error-color);
+        }
+
+        .impostor-hint {
+            color: var(--error-color);
+        }
+    }
+}
+
+hr {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    width: 100%;
+}
+
+.impostor-hint {
+    background-color: rgba(207, 102, 121, 0.2);
+    color: var(--error-color);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-reveal {
+    background-color: var(--surface-color);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    width: 100%;
+    padding: 2em;
+    font-size: 1.5rem;
+}
+
+.btn-reveal:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.vote-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &.revealed {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding-bottom: 15px;
+    }
+}
+
+.vote-player-list {
+    width: 100%;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.vote-role {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+
+    &.Impostor {
+        background-color: rgba(207, 102, 121, 0.2);
+        color: var(--error-color);
+        border: 1px solid var(--error-color);
+    }
+
+    &.Citizen {
+        background-color: #03dac515;
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+    }
+}
+
+.role-badge {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.impostor-word {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    width: 100%;
+
+    button {
+        flex: 1;
+    }
+}

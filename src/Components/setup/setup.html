@@ -1,0 +1,66 @@
+<div class="input-group">
+    <input #nameInput type="text" [ngModel]="playerName()" (ngModelChange)="playerName.set($event)"
+        (keyup.enter)="addPlayer()" placeholder="Nombre del jugador" class="player-input">
+    <button (click)="addPlayer()" class="btn-primary" [disabled]="!playerName()">
+        Agregar
+    </button>
+</div>
+
+<ul class="player-list">
+    @for (player of players(); track $index) {
+        <li>
+            <span class="player-name">{{ player.name }}</span>
+            <button (click)="removePlayer($index)" class="btn-icon">🗑️</button>
+        </li>
+    }
+</ul>
+
+<div class="start-button">
+    <button (click)="startGame()" class="btn-start" [disabled]="!isSetupValid()">
+        Empezar Juego
+    </button>
+    <div class="hints">
+        @if (!isGameReady()) {
+            <p class="hint warning">Mínimo 3 jugadores para empezar.</p>
+        }
+        @if (selectedCategories().length === 0) {
+            <p class="hint warning">Selecciona al menos una categoría.</p>
+        }
+    </div>
+</div>
+
+<div class="actions">
+    <div class="settings-section">
+        <h3>Configuración</h3>
+
+        <div class="setting-item">
+            <label>Cantidad de Impostores:</label>
+            <div class="impostor-control">
+                <button class="btn-icon small" (click)="adjustImpostorCount(-1)"
+                    [disabled]="impostorCount() <= 0">➖</button>
+                <span class="count-display">{{ impostorCount() }}</span>
+                <button class="btn-icon small" (click)="adjustImpostorCount(1)"
+                    [disabled]="impostorCount() >= maxImpostors()">➕</button>
+            </div>
+        </div>
+
+        <div class="setting-item">
+            <div class="category-header">
+                <label>Categorías:</label>
+                <div class="category-actions">
+                    <button class="btn-text" (click)="selectAll()" title="Todas">Todo</button>
+                    <button class="btn-text" (click)="selectNone()" title="Ninguna">Nada</button>
+                    <button class="btn-text" (click)="invertSelection()" title="Invertir">Invertir</button>
+                </div>
+            </div>
+            <div class="categories-list">
+                @for (cat of availableCategories(); track cat) {
+                    <label class="category-checkbox" [class.active]="selectedCategories().includes(cat)"
+                        (click)="toggleCategory(cat)">
+                        {{ cat }}
+                    </label>
+                }
+            </div>
+        </div>
+    </div>
+</div>
