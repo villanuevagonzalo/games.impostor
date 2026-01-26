@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed, inject, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
@@ -39,9 +39,42 @@ export class GameService {
     readonly isGameReady = computed(() => this.players().length >= 3);
 
     private words: GameWord[] = [];
+    private readonly STORAGE_KEY = 'impostor_game_state';
 
     constructor() {
+        this.loadState();
         this.loadWords();
+
+        // Auto-save effect
+        effect(() => {
+            this.saveState();
+        });
+    }
+
+    private saveState() {
+        const state = {
+            players: this.players(),
+            gameState: this.gameState(),
+            currentTurnIndex: this.currentTurnIndex(),
+            currentWord: this.currentWord()
+        };
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(state));
+    }
+
+    private loadState() {
+        const saved = localStorage.getItem(this.STORAGE_KEY);
+        if (saved) {
+            try {
+                const state = JSON.parse(saved);
+                this.players.set(state.players || []);
+                this.gameState.set(state.gameState || 'SETUP');
+                this.currentTurnIndex.set(state.currentTurnIndex || 0);
+                this.currentWord.set(state.currentWord || null);
+            } catch (e) {
+                console.error('Error parsing saved state', e);
+                localStorage.removeItem(this.STORAGE_KEY);
+            }
+        }
     }
 
     async loadWords() {
@@ -67,6 +100,10 @@ export class GameService {
 
     removePlayer(index: number) {
         this.players.update(p => p.filter((_, i) => i !== index));
+    }
+
+    clearPlayers() {
+        this.players.set([]);
     }
 
     startGame(config: { impostorCount: number, categories: string[] }) {
@@ -147,6 +184,7 @@ export class GameService {
         this.currentTurnIndex.set(0);
         this.currentWord.set(null);
         this.players.update(players => players.map(p => ({ name: p.name }))); // Keep names, reset roles
+        localStorage.removeItem(this.STORAGE_KEY);
     }
 
     private shuffleArray<T>(array: T[]): T[] {

@@ -84,6 +84,12 @@ export class Setup implements AfterViewInit {
     }
   }
 
+  clearPlayers() {
+    this.gameService.clearPlayers();
+    this.playerName.set('');
+    this.nameInput.nativeElement.focus();
+  }
+
   adjustImpostorCount(delta: number) {
     const newCount = this.impostorCount() + delta;
     if (newCount >= 0 && newCount <= this.maxImpostors()) {

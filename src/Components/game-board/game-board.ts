@@ -21,6 +21,7 @@ export class GameBoard {
 
   // Voting State
   revealedVotingRoles = signal<Set<number>>(new Set());
+  wordRevealed = signal(false);
 
   isRevealed = signal(false);
 
@@ -59,6 +60,10 @@ export class GameBoard {
       }
       return newSet;
     });
+  }
+
+  toggleWordReveal() {
+    this.wordRevealed.update(v => !v);
   }
 
   resetGame() {

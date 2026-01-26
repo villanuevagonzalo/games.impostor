@@ -78,14 +78,23 @@
                             <div class="vote-role" [class]="player.role">
                                 <span
                                     class="role-badge">{{ player.role === 'Impostor' ? 'IMPOSTOR' : 'Ciudadano' }}</span>
-                                @if(player.role === 'Impostor') {
-                                    <p class="impostor-word">Pista: {{ player.impostorHint }}</p>
-                                }
                             </div>
                         }
                     </li>
                 }
             </ul>
+
+            <div class="reveal-word-section">
+                <button class="btn-text" (click)="toggleWordReveal()">
+                    {{ wordRevealed() ? 'Ocultar Palabra' : 'Revelar Palabra' }}
+                </button>
+                @if (wordRevealed()) {
+                    <div class="word-reveal animate-fade-in">
+                        <p class="secret-word">{{ currentWord()?.palabraSecreta }}</p>
+                        <p class="category">{{ currentWord()?.categoria }}</p>
+                    </div>
+                }
+            </div>
         </div>
     }
 }

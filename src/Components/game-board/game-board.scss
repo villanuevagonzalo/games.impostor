@@ -162,6 +162,53 @@ hr {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.reveal-word-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+
+    .btn-text {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}
+
+.word-reveal {
+    background-color: var(--surface-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    width: 100%;
+
+    .secret-word {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+    .category {
+        margin: 5px 0 0 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
 }
 
 .vote-role {

@@ -4,6 +4,9 @@
     <button (click)="addPlayer()" class="btn-primary" [disabled]="!playerName()">
         Agregar
     </button>
+    <button (click)="clearPlayers()" class="btn-primary" [disabled]="players().length === 0">
+        Limpiar
+    </button>
 </div>
 
 <ul class="player-list">
