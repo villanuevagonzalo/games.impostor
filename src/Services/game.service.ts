@@ -35,7 +35,7 @@ export interface SetupState {
 const DEFAULT_SETUP_STATE: SetupState = {
     impostorCount: 1,
     selectedCategories: [],
-    shareImpostorHints: false,
+    shareImpostorHints: true,
     isRandomImpostorCount: false,
     isPlayersOpen: true,
     isImpostorsOpen: true,
@@ -86,7 +86,7 @@ export class GameService {
             // Only clamp if we have players (max > 0) or if we want to enforce 0 when 0 players.
             // Usually max is player count.
             // Be careful not to create infinite loops or unneeded writes.
-            if (currentData.impostorCount > max && max >= 0) {
+            if (currentData.impostorCount > max && max > 0) {
                 this.setImpostorCount(max);
             }
         });

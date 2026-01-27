@@ -40,7 +40,7 @@ export class Setup implements AfterViewInit {
 
   // Impostor Logic
   impostorCount = computed(() => this.gameService.setupState().impostorCount);
-  maxImpostors = computed(() => Math.max(0, this.players().length));
+  maxImpostors = computed(() => Math.max(1, this.players().length));
 
   shareImpostorHint = computed(() => this.gameService.setupState().shareImpostorHints);
   isRandomImpostorCount = computed(() => this.gameService.setupState().isRandomImpostorCount);
