@@ -1,0 +1,135 @@
+@switch (gameState()) {
+    @case ('VIEW_ROLE') {
+        <div class="card view-role">
+            <h2>Turno de</h2>
+            <div class="player-name">{{ currentPlayer().name }}</div>
+            <span>Pasa el celular a este jugador y presiona "Ver Rol".</span>
+
+            @if (isRevealed()) {
+                <div [class]="'role-reveal animate-fade-in ' + currentPlayer().role">
+                    @if (currentPlayer().role === 'Citizen') {
+                        <h3>Eres Inocente</h3>
+                        <hr>
+                        <div class="clues">
+                            <span>Palabra Secreta:</span>
+                            <span class="hint">{{ currentWord()?.palabraSecreta }}</span>
+                            <span class="category">Categoría: {{ currentWord()?.categoria }}</span>
+                        </div>
+                    } @else if (currentPlayer().role === 'Impostor') {
+                        <h3>Eres el IMPOSTOR</h3>
+                        <hr>
+                        <div class="clues">
+                            <span>Tu pista es:</span>
+                            <span class="impostor-hint">{{ currentPlayer().impostorHint }}</span>
+                        </div>
+                    }
+                    <hr>
+                    <button (click)="nextTurn()" class="btn-primary">
+                        OK, Entendido
+                    </button>
+                </div>
+            } @else {
+                <button (click)="toggleReveal()" class="btn-reveal">
+                    Ver Rol
+                </button>
+            }
+
+            <div class="navigation-buttons">
+                <button (click)="previousTurn()" class="btn-secondary"
+                    [disabled]="currentTurnIndex() === 0 || isRevealed()">
+                    Anterior
+                </button>
+                <button (click)="nextTurn()" class="btn-primary" [disabled]="isRevealed()">
+                    Siguiente
+                </button>
+            </div>
+        </div>
+    }
+
+    @case ('PLAYING') {
+        <div class="card playing">
+            <h2>Juego en Curso</h2>
+
+            @if (startingPlayer()) {
+                <div class="starting-player-banner">
+                    <span class="label">Comienza la ronda:</span>
+                    <span class="player-name">{{ startingPlayer() }}</span>
+                </div>
+            }
+
+            <p>Debatan y hagan preguntas para descubrir al Impostor.</p>
+
+            <div class="navigation-buttons">
+                <button (click)="previousTurn()" class="btn-secondary">
+                    Volver a Roles
+                </button>
+                <button (click)="startVoting()" class="btn-danger">
+                    Votar al Sospechoso
+                </button>
+            </div>
+        </div>
+    }
+
+    @case ('VOTING') {
+        <div class="card voting">
+            <h2>Votación</h2>
+            <p>¿Quién es el Impostor?</p>
+
+            @if (allImpostorsFound()) {
+                <div class="impostors-found-banner animate-bounce-in">
+                    <h1>🎉</h1>
+                    <h3>¡Impostores Descubiertos!</h3>
+                    <div>Han encontrado a todos los impostores</div>
+
+                    <button (click)="resetGame()" class="btn-secondary">
+                        Nuevo Juego
+                    </button>
+                </div>
+            } @else{
+                <div class="reveal-word-section">
+                    <button class="btn-danger" (click)="toggleRolesReveal()">
+                        {{ rolesRevealed() ? 'Ocultar Roles' : 'Revelar Roles' }}
+                    </button>
+                    <button class="btn-primary" (click)="toggleWordReveal()">
+                        {{ wordRevealed() ? 'Ocultar Palabra' : 'Revelar Palabra' }}
+                    </button>
+                </div>
+
+            }
+
+            @if (wordRevealed() || allImpostorsFound()) {
+                <div class="word-reveal animate-fade-in">
+                    <p class="secret-word">{{ currentWord()?.palabraSecreta }}</p>
+                    <p class="category">{{ currentWord()?.categoria }}</p>
+                </div>
+            }
+
+            @for (player of players(); track player.name; let i = $index) {
+                <div class="vote-item" (click)="toggleVotingRole(i)"
+                    [class.revealed]="revealedVotingRoles().has(i) || rolesRevealed()">
+                    <div class="vote-header">
+                        <span>{{ player.name }}</span>
+                        <span class="reveal-icon">
+                            @if (revealedVotingRoles().has(i) || rolesRevealed()) {
+                                👁️
+                            } @else {
+                                🔒
+                            }
+                        </span>
+                    </div>
+
+                    @if (revealedVotingRoles().has(i) || rolesRevealed()) {
+                        <div class="vote-role animate-fade-in" [class]="player.role">
+                            <span class="role-badge">{{ player.role === 'Impostor' ? 'IMPOSTOR' : 'Inocente' }}</span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+}
+<hr>
+
+<button (click)="resetGame()" class="btn-secondary mt-4">
+    Reiniciar Juego
+</button>

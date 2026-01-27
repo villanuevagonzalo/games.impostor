@@ -1,0 +1,122 @@
+<div class="start-button">
+    <button (click)="startGame()" class="btn-start" [disabled]="!isSetupValid()">
+        Empezar Juego
+    </button>
+    <div class="hints">
+        @if (!isGameReady()) {
+            <p class="hint warning">Mínimo 3 jugadores para empezar.</p>
+        }
+        @if (selectedCategories().length === 0) {
+            <p class="hint warning">Selecciona al menos una categoría.</p>
+        }
+    </div>
+</div>
+
+<div class="section-container">
+    <div class="section-header section-columns" (click)="toggleSection('players')">
+        <div class="header-left">
+            <span class="chevron" [class.is-collapsed]="isPlayersOpen()"></span>
+            <h2>Jugadores <span class="note">( {{ players().length }} )</span></h2>
+        </div>
+        <div class="header-actions" (click)="$event.stopPropagation()">
+            <button (click)="clearPlayers()" class="btn-text danger" [disabled]="players().length === 0">
+                Limpiar lista
+            </button>
+        </div>
+    </div>
+
+    @if (isPlayersOpen()) {
+        <div class="section-content">
+            <label>Lista de jugadores:</label>
+            @for (player of players(); track $index) {
+                <div class="player-item">
+                    <span class="player-name">{{ player.name }}</span>
+                    <button (click)="removePlayer($index)" class="btn-icon">🗑️</button>
+                </div>
+            }
+
+            <div class="input-group">
+                <input #nameInput type="text" [ngModel]="playerName()" (ngModelChange)="updatePlayerName($event)"
+                    (keyup.enter)="addPlayer()" placeholder="Nombre del jugador" class="player-input">
+                <button (click)="addPlayer()" class="btn-primary" [disabled]="!playerName()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="section-container">
+    <div class="section-header" (click)="toggleSection('impostors')">
+        <div class="header-left">
+            <span class="chevron" [class.is-collapsed]="isImpostorsOpen()"></span>
+            <h2>Impostores</h2>
+        </div>
+    </div>
+
+    @if (isImpostorsOpen()) {
+        <div class="section-content">
+            <label>Cantidad de Impostores:</label>
+            <div class="impostor-count-container">
+                <div class="impostor-count-control" [class.disabled]="isRandomImpostorCount()">
+                    <button class="btn-icon small" (click)="adjustImpostorCount(-1)" [disabled]="impostorCount() <= 0"
+                        [disabled]="isRandomImpostorCount()">➖</button>
+                    <span class="count-display">{{ impostorCount() }}</span>
+                    <button class="btn-icon small" (click)="adjustImpostorCount(1)"
+                        [disabled]="impostorCount() >= maxImpostors()" [disabled]="isRandomImpostorCount()">➕</button>
+                </div>
+                <label class="impostor-random-control">
+                    <input type="checkbox" [ngModel]="isRandomImpostorCount()"
+                        (ngModelChange)="toggleRandomImpostorCount($event)">
+                    <span>Aleatorio</span>
+                </label>
+            </div>
+
+            @if (isRandomImpostorCount()) {
+                <div class="random-info">
+                    <p>La cantidad de impostores se decidirá al empezar la partida.</p>
+                    <p class="description">Es muy probable que sean {{ players().length / 3 | number:'1.0-0' }}
+                        impostores</p>
+                    <!-- <button class="btn-text danger" (click)="debugProbability()">Debug 100x</button> -->
+                </div>
+            }
+
+            <label>Otras Opciones:</label>
+            <label class="impostor-share-hints">
+                <input type="checkbox" [ngModel]="shareImpostorHint()"
+                    (ngModelChange)="toggleShareImpostorHints($event)">
+                <span>Los Impostores comparten la misma pista</span>
+            </label>
+        </div>
+    }
+</div>
+
+<div class="section-container">
+    <div class="section-header section-columns" (click)="toggleSection('categories')">
+        <div class="header-left">
+            <span class="chevron" [class.is-collapsed]="isCategoriesOpen()"></span>
+            <h2>Categorías <span class="note">( {{ selectedCategories().length }} / {{ availableCategories().length }} )
+                </span>
+            </h2>
+        </div>
+        <div class="header-actions" (click)="$event.stopPropagation()">
+            <button class="btn-text danger" (click)="selectAll()" title="Todas">Todos</button>
+            <button class="btn-text danger" (click)="selectNone()" title="Ninguna">Ninguna</button>
+            <button class="btn-text danger" (click)="invertSelection()" title="Invertir">Invertir</button>
+        </div>
+    </div>
+
+    @if (isCategoriesOpen()) {
+        <div class="section-content">
+            <label>Selecciona las categorías:</label>
+            <div class="categories-list">
+                @for (cat of availableCategories(); track cat) {
+                    <label class="category-checkbox" [class.active]="selectedCategories().includes(cat)"
+                        (click)="toggleCategory(cat)">
+                        {{ cat }}
+                    </label>
+                }
+            </div>
+        </div>
+    }
+</div>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { Setup } from '../Components/setup/setup';
-import { GameBoard } from '../Components/game-board/game-board';
+import { Setup } from '../Pages/Setup/setup';
+import { GameBoard } from '../Pages/GameBoard/game-board';
 
 export const routes: Routes = [
     { path: '', component: Setup },

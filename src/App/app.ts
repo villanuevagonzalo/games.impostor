@@ -5,7 +5,7 @@ import { GameService } from '../Services/game.service';
 @Component({
   selector: '#app_root',
   imports: [RouterOutlet],
-  templateUrl: './template.html'
+  templateUrl: './app.html'
 })
 export class App {
   gameService = inject(GameService);
