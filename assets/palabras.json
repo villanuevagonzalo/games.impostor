@@ -17917,5 +17917,155 @@
       "Ruta",
       "Asientos"
     ]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "amigo invisible",
+    "pistasImpostor": ["Sorteo por papelitos", "Regalo sorpresa", "Identidad oculta", "Intercambio en grupo", "Reglas tipo Navidad"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "radio rebel",
+    "pistasImpostor": ["Emisora alternativa", "Locutor al aire", "Frecuencia FM/AM", "Programa nocturno", "Cortina musical"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "querido",
+    "pistasImpostor": ["Tratamiento afectuoso", "Arranque de mensaje", "Tono formal-irónico", "Sinónimo de 'estimado'", "Palabra comodín de chat"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chungis",
+    "pistasImpostor": ["Apodo del grupo", "Se usa para llamar a alguien", "Suena a sobrenombre", "Modo cariñoso/burlón", "Marca de identidad interna"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "valerey",
+    "pistasImpostor": ["Nombre convertido en apodo", "Se repite en frases", "Referencia interna", "Etiqueta de chat", "Suena a 'Valeria'"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chino",
+    "pistasImpostor": ["Apodo de alguien", "Asociado a comida/Asia", "Se usa en cadenas", "Parte de frases internas", "Puede ser un 'personaje' del grupo"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "paraná",
+    "pistasImpostor": ["Ciudad entrerriana", "Costanera y río", "Origen/localidad", "Lugar de juntadas", "Referencia geográfica del grupo"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "tralalá",
+    "pistasImpostor": ["Tarareo sin letra", "Relleno cantado", "Sonido de burla", "Se usa para cortar tensión", "Como 'lalala'"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "feliz año nuevo",
+    "pistasImpostor": ["Saludo de fin de año", "Después de medianoche", "Brindis y fuegos", "Mensaje masivo", "1 de enero"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "hongos",
+    "pistasImpostor": ["Aparecen con humedad", "Moho en pared", "Olor a encierro", "Manchas que crecen", "Problema de casa/baño"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "bolsa",
+    "pistasImpostor": ["Sirve para llevar cosas", "Puede ser de plástico", "Se usa en compras", "También para basura", "Tiene manijas"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "confirmar asistencia",
+    "pistasImpostor": ["RSVP", "Decir si vas", "Lista de invitados", "Organizar evento", "Responder invitación"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chino",
+    "pistasImpostor": ["Apodo repetido", "Asociado a comida", "Puede ir con 'radio'", "Parte de un chiste interno", "Se usa como llamado"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "vicuña",
+    "pistasImpostor": ["Animal de los Andes", "Pariente de la llama", "Lana finísima", "Altiplano", "Camélido sudamericano"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "declansito",
+    "pistasImpostor": ["Apodo futbolero", "Apellido inglés", "Mediocampista", "Chiste con jugador", "Sonido a diminutivo"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chungis",
+    "pistasImpostor": ["Sobrenombre recurrente", "Marca de grupo", "Se usa en saludos", "Puede ser plural", "Identidad compartida"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "valerey",
+    "pistasImpostor": ["Apodo tipo nickname", "Referencia a una persona", "Se usa en frases", "Suena a 'rey'", "Etiqueta interna"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "pistas",
+    "pistasImpostor": ["Ayudan a adivinar", "No es la palabra", "Se dan de a poco", "Juego de deducción", "Guían la respuesta"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "augu",
+    "pistasImpostor": ["Diminutivo de nombre", "Apodo corto", "Se usa en chat", "Llamado rápido", "Identidad de amigo"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "ahre",
+    "pistasImpostor": ["Muletilla argentina", "Marca sarcasmo", "Se usa al final", "Remate de chiste", "Tono irónico"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chiquis",
+    "pistasImpostor": ["Llamado grupal", "Modo cariñoso", "Plural", "Se usa para arrancar mensaje", "Sinónimo de 'gente'"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "rice",
+    "pistasImpostor": ["Apellido en inglés", "Referencia futbolera", "Suena a 'arroz'", "Meme del grupo", "Premier League vibe"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "invisible",
+    "pistasImpostor": ["No se puede ver", "Oculto", "Como fantasma", "Secreto", "Fuera de vista"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "rotaract",
+    "pistasImpostor": ["Organización juvenil", "Acción social", "Reuniones y proyectos", "Comunidad", "Vinculado a Rotary"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "juntada",
+    "pistasImpostor": ["Plan con amigos", "Reunión informal", "Puede ser asado", "Se coordina por chat", "Sale espontánea"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "achuchina",
+    "pistasImpostor": ["Apodo raro", "Suena inventado", "Chiste interno", "Se usa en cadenas", "Nickname del grupo"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "rebel",
+    "pistasImpostor": ["Actitud contra lo común", "Nombre 'cool'", "Asociado a radio", "Espíritu libre", "Sinónimo de rebelde"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "chueco",
+    "pistasImpostor": ["Torcido", "Desalineado", "No está recto", "Puede ser apodo", "Broma por forma"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "bolsa",
+    "pistasImpostor": ["Contenedor liviano", "Se llena y se lleva", "Compras/súper", "Basura", "De tela o plástico"]
+  },
+  {
+    "categoria": "AGUSTIN",
+    "palabraSecreta": "primo",
+    "pistasImpostor": ["Familiar", "Hijo de tu tío", "Pariente cercano", "Reunión familiar", "Mismo apellido a veces"]
   }
 ]
